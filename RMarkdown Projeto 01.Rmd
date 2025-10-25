@@ -23,17 +23,17 @@ output:
 ### Instalar e importar pacotes relevantes para análise
 
 ```{r}
-#Instalar pacotes utilizando a função installed.packages().
+#Instalar pacotes utilizando a função install.packages().
 
-#installed.packages("readr")
-#installed.packages("dplyr")
-#installed.packages("tidyverse")
+#install.packages("readr")
+#install.packages("dplyr")
+#install.packages("tidyverse")
 #install.packages("naniar")
 #install.packages("readxl")
 #install.packages("leaflet")
 #grafico de geolocalização
-#installed.packages("geobr")
-#installed.packages("sf")
+#install.packages("geobr")
+#install.packages("sf")
 ```
 
 ```{r}

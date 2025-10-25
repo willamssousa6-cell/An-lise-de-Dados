@@ -373,9 +373,52 @@ display: none;
 <h1>OBJETIVOS DA ANÁLISE</h1>
 <div id="importações" class="section level2">
 <h2>Importações:</h2>
-<div id="importar-pacotes-relevantes-para-análise" class="section level3">
-<h3>Importar pacotes relevantes para análise</h3>
-<p><code>{r pacotes} library(dplyr) library(rstatix)</code></p>
+<div id="instalar-e-importar-pacotes-relevantes-para-análise" class="section level3">
+<h3>Instalar e importar pacotes relevantes para análise</h3>
+<pre class="r"><code>##Instalar pacotes utilizando a função install.packages().
+
+install.packages(&quot;readr&quot;)
+install.packages(&quot;dplyr&quot;)
+install.packages(&quot;tidyverse&quot;)
+install.packages(&quot;naniar&quot;)
+install.packages(&quot;readxl&quot;)
+install.packages(&quot;leaflet&quot;)
+#grafico de geolocalização
+install.packages(&quot;geobr&quot;)
+install.packages(&quot;sf&quot;)</code></pre>
+<pre class="r"><code>#Importar pacotes utilizando a função library().
+
+library(naniar)
+library(readr)
+library(readxl)
+library(dplyr)
+library(ggplot2)
+library(plotly)
+library(httr)
+library(jsonlite)
+library(tidyverse)
+library(leaflet)
+library(geobr)
+library(sf)
+library(stringi)</code></pre>
+</div>
+</div>
+<div id="carregar-o-conjunto-de-dados-em-um-dataframe" class="section level2">
+<h2>Carregar o conjunto de dados em um DataFrame</h2>
+<div id="o-conjunto-de-dados-fornecido-está-no-formato-de-um-arquivo-excel-.-carregar-os-dados-em-um-dataframe-e-salve-os-em-uma-variável-chamada-dados.anp." class="section level3">
+<h3>O conjunto de dados fornecido está no formato de um arquivo Excel .
+Carregar os dados em um DataFrame e salve-os em uma variável chamada
+(dados.anp).</h3>
+<div id="ao-importar-os-dados-revisar-o-tipo-de-dado-relizar-correções-se-for-o-caso." class="section level4">
+<h4>💡Ao importar os dados revisar o tipo de dado, relizar correções, se
+for o caso.</h4>
+<pre class="r"><code># Seu código R aqui
+minha_funcao &lt;- function(x) {
+  return(x * 2)
+}
+
+print(minha_funcao(5))</code></pre>
+</div>
 </div>
 </div>
 </div>

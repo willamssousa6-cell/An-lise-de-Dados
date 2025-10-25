@@ -20,9 +20,50 @@ output:
 
 ## Importações:
 
-### Importar pacotes relevantes para análise
+### Instalar e importar pacotes relevantes para análise
+```r
+##Instalar pacotes utilizando a função install.packages().
 
-```{r pacotes}
+install.packages("readr")
+install.packages("dplyr")
+install.packages("tidyverse")
+install.packages("naniar")
+install.packages("readxl")
+install.packages("leaflet")
+#grafico de geolocalização
+install.packages("geobr")
+install.packages("sf")
+```
+
+```r
+#Importar pacotes utilizando a função library().
+
+library(naniar)
+library(readr)
+library(readxl)
 library(dplyr)
-library(rstatix)
+library(ggplot2)
+library(plotly)
+library(httr)
+library(jsonlite)
+library(tidyverse)
+library(leaflet)
+library(geobr)
+library(sf)
+library(stringi)
+```
+
+## Carregar o conjunto de dados em um DataFrame
+
+### O conjunto de dados fornecido está no formato de um arquivo Excel . Carregar  os dados  em um DataFrame e salve-os em uma variável chamada (dados.anp).
+
+#### 💡Ao importar os dados revisar o tipo de dado, relizar correções, se for o caso.
+
+```r
+# Seu código R aqui
+minha_funcao <- function(x) {
+  return(x * 2)
+}
+
+print(minha_funcao(5))
 ```
