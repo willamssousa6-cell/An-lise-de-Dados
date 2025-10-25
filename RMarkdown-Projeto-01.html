@@ -373,9 +373,82 @@ display: none;
 <h1>OBJETIVOS DA ANÁLISE</h1>
 <div id="importações" class="section level2">
 <h2>Importações:</h2>
-<div id="importar-pacotes-relevantes-para-análise" class="section level3">
-<h3>Importar pacotes relevantes para análise</h3>
-<p><code>{r pacotes} library(dplyr) library(rstatix)</code></p>
+<div id="instalar-e-importar-pacotes-relevantes-para-análise" class="section level3">
+<h3>Instalar e importar pacotes relevantes para análise</h3>
+<pre class="r"><code>#Instalar pacotes utilizando a função installed.packages().
+
+#installed.packages(&quot;readr&quot;)
+#installed.packages(&quot;dplyr&quot;)
+#installed.packages(&quot;tidyverse&quot;)
+#install.packages(&quot;naniar&quot;)
+#install.packages(&quot;readxl&quot;)
+#install.packages(&quot;leaflet&quot;)
+#grafico de geolocalização
+#installed.packages(&quot;geobr&quot;)
+#installed.packages(&quot;sf&quot;)</code></pre>
+<pre class="r"><code>#Importar pacotes utilizando a função library().
+
+library(naniar)
+library(readr)
+library(readxl)
+library(dplyr)</code></pre>
+<pre><code>## 
+## Anexando pacote: &#39;dplyr&#39;</code></pre>
+<pre><code>## Os seguintes objetos são mascarados por &#39;package:stats&#39;:
+## 
+##     filter, lag</code></pre>
+<pre><code>## Os seguintes objetos são mascarados por &#39;package:base&#39;:
+## 
+##     intersect, setdiff, setequal, union</code></pre>
+<pre class="r"><code>library(ggplot2)
+library(plotly)</code></pre>
+<pre><code>## 
+## Anexando pacote: &#39;plotly&#39;</code></pre>
+<pre><code>## O seguinte objeto é mascarado por &#39;package:ggplot2&#39;:
+## 
+##     last_plot</code></pre>
+<pre><code>## O seguinte objeto é mascarado por &#39;package:stats&#39;:
+## 
+##     filter</code></pre>
+<pre><code>## O seguinte objeto é mascarado por &#39;package:graphics&#39;:
+## 
+##     layout</code></pre>
+<pre class="r"><code>library(httr)</code></pre>
+<pre><code>## 
+## Anexando pacote: &#39;httr&#39;</code></pre>
+<pre><code>## O seguinte objeto é mascarado por &#39;package:plotly&#39;:
+## 
+##     config</code></pre>
+<pre class="r"><code>library(jsonlite)
+library(tidyverse)</code></pre>
+<pre><code>## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+## ✔ forcats   1.0.1     ✔ stringr   1.5.2
+## ✔ lubridate 1.9.4     ✔ tibble    3.3.0
+## ✔ purrr     1.1.0     ✔ tidyr     1.3.1</code></pre>
+<pre><code>## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ httr::config()   masks plotly::config()
+## ✖ plotly::filter() masks dplyr::filter(), stats::filter()
+## ✖ purrr::flatten() masks jsonlite::flatten()
+## ✖ dplyr::lag()     masks stats::lag()
+## ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+<pre class="r"><code>library(leaflet)
+library(geobr)</code></pre>
+<pre><code>## Carregando namespace exigido: sf</code></pre>
+<pre class="r"><code>library(sf)</code></pre>
+<pre><code>## Linking to GEOS 3.13.1, GDAL 3.11.0, PROJ 9.6.0; sf_use_s2() is TRUE</code></pre>
+<pre class="r"><code>library(stringi)</code></pre>
+</div>
+</div>
+<div id="carregar-o-conjunto-de-dados-em-um-dataframe" class="section level2">
+<h2>Carregar o conjunto de dados em um DataFrame</h2>
+<div id="o-conjunto-de-dados-fornecido-está-no-formato-de-um-arquivo-excel-.-carregar-os-dados-em-um-dataframe-e-salve-os-em-uma-variável-chamada-dados.anp." class="section level3">
+<h3>O conjunto de dados fornecido está no formato de um arquivo Excel .
+Carregar os dados em um DataFrame e salve-os em uma variável chamada
+(dados.anp).</h3>
+<div id="ao-importar-os-dados-revisar-o-tipo-de-dado-relizar-correções-se-for-o-caso." class="section level4">
+<h4>💡Ao importar os dados revisar o tipo de dado, relizar correções, se
+for o caso.</h4>
+</div>
 </div>
 </div>
 </div>

@@ -1,0 +1,61 @@
+---
+title: 'Análise de Dados '
+author: "Willams Sousa Brito"
+date: "20/10/2025"
+output:
+  html_document: default
+  word_document: default
+  pdf_document: default
+---
+
+# **Estudo do Preço do combustível automotivo no Brasil em 2025**
+
+## **Fonte de Dados:**
+
+### 1- ANP: Dados do primeiro semestre do ano de 2025
+
+### 2- IBGE: Dados de localização dos Municípios.
+
+# OBJETIVOS DA ANÁLISE
+
+## Importações:
+
+### Instalar e importar pacotes relevantes para análise
+
+```{r}
+#Instalar pacotes utilizando a função installed.packages().
+
+#installed.packages("readr")
+#installed.packages("dplyr")
+#installed.packages("tidyverse")
+#install.packages("naniar")
+#install.packages("readxl")
+#install.packages("leaflet")
+#grafico de geolocalização
+#installed.packages("geobr")
+#installed.packages("sf")
+```
+
+```{r}
+#Importar pacotes utilizando a função library().
+
+library(naniar)
+library(readr)
+library(readxl)
+library(dplyr)
+library(ggplot2)
+library(plotly)
+library(httr)
+library(jsonlite)
+library(tidyverse)
+library(leaflet)
+library(geobr)
+library(sf)
+library(stringi)
+```
+
+## Carregar o conjunto de dados em um DataFrame
+
+### O conjunto de dados fornecido está no formato de um arquivo Excel . Carregar  os dados  em um DataFrame e salve-os em uma variável chamada (dados.anp).
+
+#### 💡Ao importar os dados revisar o tipo de dado, relizar correções, se for o caso.
