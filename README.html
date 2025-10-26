@@ -359,12 +359,30 @@ display: none;
 <div id="estudo-do-preço-do-combustível-automotivo-no-brasil-em-2025" class="section level2">
 <h2><strong>Estudo do Preço do combustível automotivo no Brasil em
 2025</strong></h2>
+<div id="uso-da-ferramenta-de-análise-de-dados---software-r" class="section level3">
+<h3>Uso da Ferramenta de análise de dados - Software R</h3>
+</div>
 </div>
 <div id="objetivos-da-análise" class="section level2">
-<h2>OBJETIVOS DA ANÁLISE:</h2>
+<h2>Objetivos da Análise:</h2>
+<div id="demonstrar-através-da-análise-exploratoria-de-dados-eda-o-processo-para-contar-uma-história-a-partir-fontes-de-dados-brutos" class="section level4">
+<h4>➡️ <strong>Demonstrar através da análise exploratoria de dados (EDA)
+o processo para contar uma história a partir fontes de dados
+brutos</strong>**</h4>
 </div>
-<div id="section" class="section level2">
-<h2></h2>
+<div id="explorar-nos-dados-descobertas-estruturação-limpeza-união-validação-e-apresentação" class="section level4">
+<h4>➡️ <strong>Explorar nos dados, descobertas, estruturação, limpeza,
+união, validação e apresentação</strong></h4>
+</div>
+<div id="descobrir-relações-entre-variáveis-e-verificar-sua-qualidade-entender-o-conjunto-de-dados-para-extrair-insights" class="section level4">
+<h4>➡️ <strong>Descobrir relações entre variáveis e verificar sua
+qualidade, entender o conjunto de dados para extrair
+insights</strong></h4>
+</div>
+<div id="utilizar-visualizações-de-dados-geográficos-e-métodos-estatísticos-para-explorar-os-dados" class="section level4">
+<h4>➡️ <strong>Utilizar visualizações de dados geográficos e métodos
+estatísticos para explorar os dados</strong></h4>
+</div>
 </div>
 <div id="fonte-de-dados" class="section level2">
 <h2><strong>Fonte de Dados:</strong></h2>
@@ -441,7 +459,7 @@ library(stringi)</code></pre>
 </div>
 </div>
 <div id="carregar-dados-em-um-dataframe." class="section level3">
-<h3>Carregar dados em um DataFrame.</h3>
+<h3><u>Carregar dados em um DataFrame.</u></h3>
 <div id="o-1º-conjunto-de-dados-escolhido-está-no-formato-de-um-arquivo-xls-excel-disponivel-para-download-no-portal-de-portal-de-dados-abertos." class="section level4">
 <h4>O 1º conjunto de dados escolhido está no formato de um arquivo xls
 (Excel), disponivel para Download no Portal de Portal de Dados
@@ -553,6 +571,83 @@ podem afetar a análise</h4>
 </div>
 <div id="decidir-se-devem-ser-removidos-ajustados-ou-mantidos" class="section level4">
 <h4>- Decidir se devem ser removidos, ajustados ou mantidos</h4>
+</div>
+</div>
+<div id="união-do-1º-e-2º-conjunto-de-dados" class="section level3">
+<h3><u>União do 1º e 2º Conjunto de dados</u></h3>
+<div id="chaves-nome-do-municipio-e-sigla-do-estado" class="section level4">
+<h4>CHAVES: NOME DO MUNICIPIO E SIGLA DO ESTADO</h4>
+</div>
+<div id="análise-inicial-dos-dados-sugere-que-a-variavel-chave-principal-disponivel-é-o-nome-do-municipio-entretanto-a-ocorrência-de-nomes-de-municipios-iguais-em-diferentes-regioes-é-comum-no-brasil-dessa-maneira-ao-utilizar-a-segunda-chave-sigla-do-estado-ira-garantir-a-correta-uniao-dos-dados." class="section level4">
+<h4>Análise inicial dos dados sugere que a variavel chave principal
+disponivel é o NOME DO MUNICIPIO, entretanto a ocorrência de nomes de
+municipios iguais em diferentes regioes é comum no Brasil, dessa maneira
+ao utilizar a segunda chave SIGLA DO ESTADO, ira garantir a correta
+uniao dos dados.</h4>
+<div id="padronização-dos-nomes-de-variaveis-e-uniformizar-valores." class="section level5">
+<h5>🎯 Padronização dos nomes de Variaveis e uniformizar valores.</h5>
+<pre class="r"><code>
+# Para realizar a união dos conjuntos de dados, inicialmente as variaveis &quot;Nome do Municipio&quot; e &quot;Nome do Estado&quot; deverão estar Padronizadas.
+
+#Padronização dos nomes de Variaveis
+#os nomes de variaveis estão com idiomas e padrao de escrita diferentes.
+names(dados.anp)
+names(municipio)
+
+#Renomeando os nomes de variaveis do 2º conjunto de daods de acordo com o 1º.
+municipio &lt;- setNames(municipio, c(&quot;codigo do Municipio&quot;, &quot;Municipio&quot;, &quot;Estado - Codigo&quot;, &quot;Estado - Sigla&quot;,&quot;Nome do Estado&quot;,&quot;Regiao - Codigo&quot;,&quot;Nome da Regiao&quot;,&quot;geom&quot;,&quot;longitude&quot;,&quot;latitude&quot; ))
+names(municipio)
+
+
+# Análise previa das variaveis Chaves.
+
+#Chave:Nomes dos Municipios
+print(dados.anp$Municipio,) #A variavel:Municipio, contem nomes em letras maiúsculas e sem acentos.
+print(municipio$Municipio)  #A variavel:name_muni, contem nomes em letras minúsculas e com acentos.  
+
+# 1ª- Padronizar tudo em letras MAIUSCULAS.
+dados.anp &lt;- dados.anp %&gt;% mutate(Municipio = tolower(Municipio))
+municipio &lt;- municipio %&gt;% mutate(Municipio = tolower(Municipio))
+
+# 2ª-padronizar tudo em palavras sem acentuação.
+dados.anp &lt;- dados.anp %&gt;% mutate(Municipio = stri_trans_general(Municipio, &quot;Latin-ASCII&quot;))
+municipio &lt;- municipio %&gt;% mutate(Municipio = stri_trans_general(Municipio, &quot;Latin-ASCII&quot;))
+
+#verificando resultado
+print(dados.anp$Municipio) #A variavel:Municipio, contem nomes em letras minúsculas e sem acentos.
+print(municipio$Municipio)  #A variavel:name_muni, contem nomes em letras minúsculas e sem acentos.  
+
+#Chave:Nomes dos Estados já estão padronizados
+head(dados.anp$`Estado - Sigla`)    
+head(municipio$`Estado - Sigla`)    
+</code></pre>
+</div>
+<div id="unir-os-dados-e-avaliar-o-resultado" class="section level5">
+<h5>🎯 Unir os dados e avaliar o resultado</h5>
+</div>
+<div id="o-novo-conjunto-de-dados-será-salvo-com-o-mesmo-nome-do-1º-conjunto-dados.anp-o-método-utilizado-left-join-combina-duas-tabelas-mantendo-todas-as-linhas-da-tabela-da-esquerda-e-adicionando-colunas-da-tabela-da-direita-quando-as-chaves-coincidem.-linhas-da-esquerda-sem-correspondência-recebem-valores-ausentes-nas-colunas-adicionadas" class="section level5">
+<h5>O novo conjunto de dados será salvo com o mesmo nome do 1º conjunto
+(dados.anp), o método utilizado (Left join) combina duas tabelas
+mantendo todas as linhas da tabela da esquerda e adicionando colunas da
+tabela da direita quando as chaves coincidem. Linhas da esquerda sem
+correspondência recebem valores ausentes nas colunas adicionadas</h5>
+<pre class="r"><code>
+#verificar a dimensão dos conjuntos de dados antes da união
+dim(dados.anp) #Linhas:420409 e Colunas:16
+dim(municipio) #Linhas:5571 e  Coliunas:8
+
+#verificar os nomes de veriaveis
+names(dados.anp)
+names(municipio)
+
+#realizar a união dos conjuntos de dados, usando duas chaves
+dados.anp &lt;- left_join(dados.anp,municipio, by = c(&quot;Municipio&quot;,&quot;Estado - Sigla&quot;))
+
+#verificar anti_join, para listar chaves nao correspondentes e descobrir as possiveis causas
+dados.anp1 &lt;- anti_join(dados.anp,municipio, by = c(&quot;Municipio&quot;,&quot;Estado - Sigla&quot;))
+#View(dados.anp1) #existe um municipio (santana do livramento) do RS que nao possui dados do IBGE registrados em 2024. 
+head(dados.anp1) #817 linhas </code></pre>
+</div>
 </div>
 </div>
 </div>
