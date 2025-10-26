@@ -111,14 +111,14 @@ str(municipio)
 
 ##### A variavel "geom", contem uma lista de dados, para a presente análise iremos utilizar a coordenadas de longitude e latitude dos municipios.
 
-```r
-#### Para extraimos as coordenadas a latitude e longitude devenis calcular os centroides
+##### 🎯 Adicionar coordenadas de latitude e longitude no data.frame
 
-# Calcular os centroides (ponto central de cada município)
+```r
+# 1- Calcular os centroides (ponto central de cada município)
 
 mun_centroids \<- st_centroid(municipio)
 
-# Extrair coordenadas de latitude e longitude
+# 2- Extrair coordenadas de latitude e longitude
 
 coords \<- st_coordinates(mun_centroids) coords
 
@@ -134,12 +134,15 @@ print(municipio)
 
 ### 🎯 Objetivos
 
-#### - Instalar e importar pacotes relevantes para análise.
-
-#### - Carregar os dados em um DataFrame, converte arquivos em estruturas manipulaveis.
-
-#### - Realizar análise prévia dos dados carregados.
-
-#### - Identificar problemas como codificação de texto, separadores, tipos de variáveis.
- 
-#### Objetivos da Estruturação e Limpeza de Dados no R 1. Corrigir inconsistências - Padronizar nomes de colunas, formatos de datas, categorias - Uniformizar valores como “sim”, “Sim”, “SIM” → “Sim” 2. Tratar valores ausentes - Identificar NA, null ou campos vazios - Decidir se deve imputar, remover ou marcar esses dados 3. Remover duplicatas - Eliminar registros repetidos que podem distorcer análises - Usar funções como duplicated() ou distinct() 4. Ajustar tipos de variáveis - Converter variáveis para os tipos corretos: numeric, factor, character, etc. - Evita erros em funções estatísticas e gráficos 5. Filtrar e selecionar dados relevantes - Remover colunas ou linhas desnecessárias - Focar apenas nos dados úteis para o objetivo da análise 6. Criar novas variáveis - Derivar colunas com base em regras ou cálculos - Exemplo: criar uma variável “faixa etária” a partir da idade 7. Detectar e tratar outliers - Identificar valores extremos que podem afetar a análise - Decidir se devem ser removidos, ajustados ou mantidos
+#### - Unir os dois data.frame criados (dados.anp e municipios)
+#### - Realizar análise prévia do novo data.frame
+#### - Corrigir inconsistências, padronizar nomes de colunas, formatos de datas, categorias 
+#### - Uniformizar valores como “sim”, “Sim”, “SIM” → “Sim” 
+#### - Tratar valores ausentes, identificar NA, null ou campos vazios 
+#### - Decidir se deve imputar, remover ou marcar esses dados 
+#### - Remover duplicatas - Eliminar registros repetidos que podem distorcer análises
+#### - Ajustar tipos de variáveis, converter variáveis para os tipos corretos: numeric, factor, character, etc. 
+#### - Filtrar e selecionar dados relevantes, remover colunas ou linhas desnecessárias 
+#### - Criar novas variáveis, derivar colunas com base em regras (categorizar) ou cálculos (métricas).
+#### - Detectar e tratar outliers - Identificar valores extremos que podem afetar a análise 
+#### - Decidir se devem ser removidos, ajustados ou mantidos

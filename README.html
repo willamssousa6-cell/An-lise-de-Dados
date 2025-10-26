@@ -485,13 +485,14 @@ especial “geom”, composta por uma lista de geometrias espaciais.</h5>
 <h5>A variavel “geom”, contem uma lista de dados, para a presente
 análise iremos utilizar a coordenadas de longitude e latitude dos
 municipios.</h5>
-<pre class="r"><code>#### Para extraimos as coordenadas a latitude e longitude devenis calcular os centroides
-
-# Calcular os centroides (ponto central de cada município)
+</div>
+<div id="adicionar-coordenadas-de-latitude-e-longitude-no-data.frame" class="section level5">
+<h5>🎯 Adicionar coordenadas de latitude e longitude no data.frame</h5>
+<pre class="r"><code># 1- Calcular os centroides (ponto central de cada município)
 
 mun_centroids \&lt;- st_centroid(municipio)
 
-# Extrair coordenadas de latitude e longitude
+# 2- Extrair coordenadas de latitude e longitude
 
 coords \&lt;- st_coordinates(mun_centroids) coords
 
@@ -510,37 +511,48 @@ print(municipio)</code></pre>
 <h2>Estruturação e Limpeza dos dados</h2>
 <div id="objetivos-1" class="section level3">
 <h3>🎯 Objetivos</h3>
-<div id="instalar-e-importar-pacotes-relevantes-para-análise.-1" class="section level4">
-<h4>- Instalar e importar pacotes relevantes para análise.</h4>
+<div id="unir-os-dois-data.frame-criados-dados.anp-e-municipios" class="section level4">
+<h4>- Unir os dois data.frame criados (dados.anp e municipios)</h4>
 </div>
-<div id="carregar-os-dados-em-um-dataframe-converte-arquivos-em-estruturas-manipulaveis.-1" class="section level4">
-<h4>- Carregar os dados em um DataFrame, converte arquivos em estruturas
-manipulaveis.</h4>
+<div id="realizar-análise-prévia-do-novo-data.frame" class="section level4">
+<h4>- Realizar análise prévia do novo data.frame</h4>
 </div>
-<div id="realizar-análise-prévia-dos-dados-carregados.-1" class="section level4">
-<h4>- Realizar análise prévia dos dados carregados.</h4>
+<div id="corrigir-inconsistências-padronizar-nomes-de-colunas-formatos-de-datas-categorias" class="section level4">
+<h4>- Corrigir inconsistências, padronizar nomes de colunas, formatos de
+datas, categorias</h4>
 </div>
-<div id="identificar-problemas-como-codificação-de-texto-separadores-tipos-de-variáveis.-1" class="section level4">
-<h4>- Identificar problemas como codificação de texto, separadores,
-tipos de variáveis.</h4>
+<div id="uniformizar-valores-como-sim-sim-sim-sim" class="section level4">
+<h4>- Uniformizar valores como “sim”, “Sim”, “SIM” → “Sim”</h4>
 </div>
-<div id="objetivos-da-estruturação-e-limpeza-de-dados-no-r-1.-corrigir-inconsistências---padronizar-nomes-de-colunas-formatos-de-datas-categorias---uniformizar-valores-como-sim-sim-sim-sim-2.-tratar-valores-ausentes---identificar-na-null-ou-campos-vazios---decidir-se-deve-imputar-remover-ou-marcar-esses-dados-3.-remover-duplicatas---eliminar-registros-repetidos-que-podem-distorcer-análises---usar-funções-como-duplicated-ou-distinct-4.-ajustar-tipos-de-variáveis---converter-variáveis-para-os-tipos-corretos-numeric-factor-character-etc.---evita-erros-em-funções-estatísticas-e-gráficos-5.-filtrar-e-selecionar-dados-relevantes---remover-colunas-ou-linhas-desnecessárias---focar-apenas-nos-dados-úteis-para-o-objetivo-da-análise-6.-criar-novas-variáveis---derivar-colunas-com-base-em-regras-ou-cálculos---exemplo-criar-uma-variável-faixa-etária-a-partir-da-idade-7.-detectar-e-tratar-outliers---identificar-valores-extremos-que-podem-afetar-a-análise---decidir-se-devem-ser-removidos-ajustados-ou-mantidos" class="section level4">
-<h4>Objetivos da Estruturação e Limpeza de Dados no R 1. Corrigir
-inconsistências - Padronizar nomes de colunas, formatos de datas,
-categorias - Uniformizar valores como “sim”, “Sim”, “SIM” → “Sim” 2.
-Tratar valores ausentes - Identificar NA, null ou campos vazios -
-Decidir se deve imputar, remover ou marcar esses dados 3. Remover
-duplicatas - Eliminar registros repetidos que podem distorcer análises -
-Usar funções como duplicated() ou distinct() 4. Ajustar tipos de
-variáveis - Converter variáveis para os tipos corretos: numeric, factor,
-character, etc. - Evita erros em funções estatísticas e gráficos 5.
-Filtrar e selecionar dados relevantes - Remover colunas ou linhas
-desnecessárias - Focar apenas nos dados úteis para o objetivo da análise
-6. Criar novas variáveis - Derivar colunas com base em regras ou
-cálculos - Exemplo: criar uma variável “faixa etária” a partir da idade
-7. Detectar e tratar outliers - Identificar valores extremos que podem
-afetar a análise - Decidir se devem ser removidos, ajustados ou
-mantidos</h4>
+<div id="tratar-valores-ausentes-identificar-na-null-ou-campos-vazios" class="section level4">
+<h4>- Tratar valores ausentes, identificar NA, null ou campos
+vazios</h4>
+</div>
+<div id="decidir-se-deve-imputar-remover-ou-marcar-esses-dados" class="section level4">
+<h4>- Decidir se deve imputar, remover ou marcar esses dados</h4>
+</div>
+<div id="remover-duplicatas---eliminar-registros-repetidos-que-podem-distorcer-análises" class="section level4">
+<h4>- Remover duplicatas - Eliminar registros repetidos que podem
+distorcer análises</h4>
+</div>
+<div id="ajustar-tipos-de-variáveis-converter-variáveis-para-os-tipos-corretos-numeric-factor-character-etc." class="section level4">
+<h4>- Ajustar tipos de variáveis, converter variáveis para os tipos
+corretos: numeric, factor, character, etc.</h4>
+</div>
+<div id="filtrar-e-selecionar-dados-relevantes-remover-colunas-ou-linhas-desnecessárias" class="section level4">
+<h4>- Filtrar e selecionar dados relevantes, remover colunas ou linhas
+desnecessárias</h4>
+</div>
+<div id="criar-novas-variáveis-derivar-colunas-com-base-em-regras-categorizar-ou-cálculos-métricas." class="section level4">
+<h4>- Criar novas variáveis, derivar colunas com base em regras
+(categorizar) ou cálculos (métricas).</h4>
+</div>
+<div id="detectar-e-tratar-outliers---identificar-valores-extremos-que-podem-afetar-a-análise" class="section level4">
+<h4>- Detectar e tratar outliers - Identificar valores extremos que
+podem afetar a análise</h4>
+</div>
+<div id="decidir-se-devem-ser-removidos-ajustados-ou-mantidos" class="section level4">
+<h4>- Decidir se devem ser removidos, ajustados ou mantidos</h4>
 </div>
 </div>
 </div>
