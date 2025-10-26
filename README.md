@@ -12,9 +12,9 @@ output:
 
 ### Uso da Ferramenta de análise de dados - Software R
 
-## Objetivos da Análise:
+### [**Objetivos da Análise:**]{.underline}
 
-#### ➡️ **Demonstrar através da análise exploratoria de dados (EDA) o processo para contar uma história a partir fontes de dados brutos**\*\*
+#### ➡️ **Demonstrar através da análise exploratoria de dados (EDA) o processo para contar uma história a partir fontes de dados brutos**
 
 #### ➡️ **Explorar nos dados, descobertas, estruturação, limpeza, união, validação e apresentação**
 
@@ -22,34 +22,40 @@ output:
 
 #### ➡️ **Utilizar visualizações de dados geográficos e métodos estatísticos para explorar os dados**
 
-## **Fonte de Dados:**
+### [**Fonte de Dados:**]{.underline}
 
-### 1- ANP: Dados do Preço do Combustível Automotivo - 1º semestre do ano de 2025.
+#### 1- ANP: Dados do Preço do Combustível Automotivo - 1º semestre do ano de 2025.
 
 #### Acesso através do Portal de Dados Abertos, dados da Agência Nacional do Petróleo, Gás Natural e Biocombustíveis - ANP
 
-### 2- IBGE: Dados de localização dos Municípios.
+#### 2- IBGE: Dados de localização dos Municípios.
 
 #### Acesso através da Pacote de Dados Geográficos Brasileiros (geobr), permite coletar dados dos shapefiles do Instituto Brasileiro de Geografia e Estatística (IBGE) e outros conjuntos oficiais de dados espaciais do Brasil
 
 #### Acesso a BigQuery <https://basedosdados.org/dataset/49ace9c8-ae2d-454b-bed9-9b9492a3a642?table=b39609b4-ffb2-4b4f-a182-47b0d160037b>
 
-## Importações pacotes e dados para análise:
+### [**Importações pacotes e dados para análise:**]{.underline}
 
-### 🎯 Objetivos
++------------------------------------------------------------------------------------------+
+| ### 🎯 Objetivos                                                                         |
++:=========================================================================================+
+| #### - Instalar e importar pacotes relevantes para análise.                              |
++------------------------------------------------------------------------------------------+
+| #### - Carregar os dados em um DataFrame, converte arquivos em estruturas manipulaveis.  |
++------------------------------------------------------------------------------------------+
+| #### - Realizar análise prévia dos dados carregados.                                     |
++------------------------------------------------------------------------------------------+
+| #### - Identificar problemas como codificação de texto, separadores, tipos de variáveis. |
++------------------------------------------------------------------------------------------+
 
-#### - Instalar e importar pacotes relevantes para análise.
+#### 
 
-#### - Carregar os dados em um DataFrame, converte arquivos em estruturas manipulaveis.
-
-#### - Realizar análise prévia dos dados carregados.
-
-#### - Identificar problemas como codificação de texto, separadores, tipos de variáveis.
+#### 🎯Instalar pacotes utilizando a função install.packages().
 
 -   <div>
 
     ``` r
-    ##Instalar pacotes utilizando a função install.packages().
+    ##Instalar pacotes utilizando 
 
     install.packages("readr")
     install.packages("dplyr")
@@ -66,31 +72,37 @@ output:
 
 -   <div>
 
-    ``` r
-    #Importar pacotes utilizando a função library().
-
-    library(naniar)
-    library(readr)
-    library(readxl)
-    library(dplyr)
-    library(ggplot2)
-    library(plotly)
-    library(httr)
-    library(jsonlite)
-    library(tidyverse)
-    library(leaflet)
-    library(geobr)
-    library(sf)
-    library(stringi)
-    ```
-
     </div>
 
-### [Carregar dados em um DataFrame.]{.underline}
+#### 🎯 Importar pacotes utilizando a função library().
+
+````         
+``` r
+#Importar pacotes 
+
+library(naniar)
+library(readr)
+library(readxl)
+library(dplyr)
+library(ggplot2)
+library(plotly)
+library(httr)
+library(jsonlite)
+library(tidyverse)
+library(leaflet)
+library(geobr)
+library(sf)
+library(stringi)
+```
+
+</div>
+````
+
+#### [Carregar dados em um DataFrame.]{.underline}
 
 #### O 1º conjunto de dados escolhido está no formato de um arquivo xls (Excel), disponivel para Download no Portal de Portal de Dados Abertos.
 
-##### 🎯 Carregar os dados em um DataFrame e salvar em uma variável chamada (dados.anp) e realizar análise prévia dos dados.
+#### 🎯 Carregar os dados em um DataFrame e salvar em uma variável chamada (dados.anp) e realizar análise prévia dos dados.
 
 ``` r
 Preços_semestrais_AUTOMOTIVOS_2025_01 <- read_excel("Preços semestrais - AUTOMOTIVOS_2025.01.xlsx")
@@ -103,11 +115,11 @@ dados.anp<-Preços_semestrais_AUTOMOTIVOS_2025_01
 str(dados.anp)
 ```
 
-##### 💡 O banco de dados dos preços dos combustiveis é um data.frame, possui 42.0409 linhas e 16 Colunas(Variaveis), a maioria das variaveis são qualitativas e a variável "Valor de Venda" a única numérica, do tipo contínua".
+#### 💡 O banco de dados dos preços dos combustiveis é um data.frame, possui 42.0409 linhas e 16 Colunas(Variaveis), a maioria das variaveis são qualitativas e a variável "Valor de Venda" a única numérica, do tipo contínua".
 
 #### O 2º conjunto de dados escolhido está disponivel na BigQuery plataforma de análise de dados do Google, os dados podem ser acessados pelo pacote(geobr).
 
-##### 🎯 Carregar os dados em um DataFrame e salvar em uma variável chamada (municipio) e realizar análise prévia dos dados.
+#### 🎯 Carregar os dados em um DataFrame e salvar em uma variável chamada (municipio) e realizar análise prévia dos dados.
 
 ``` r
 # Carregar os dados dos municípios 
@@ -115,11 +127,11 @@ municipio <- read_municipality(year = 2024) #a função permite escolha do ano e
 str(municipio)
 ```
 
-##### 💡 O banco de dados geografico é um data.frame, possui 5.571 linhas e 8 Colunas(Variaveis), são variaveis qualitativas e uma variável especial "geom", composta por uma lista de geometrias espaciais.
+#### 💡 O banco de dados geografico é um data.frame, possui 5.571 linhas e 8 Colunas(Variaveis), são variaveis qualitativas e uma variável especial "geom", composta por uma lista de geometrias espaciais.
 
-##### A variavel "geom", contem uma lista de dados, para a presente análise iremos utilizar a coordenadas de longitude e latitude dos municipios.
+#### A variavel "geom", contem uma lista de dados, para a presente análise iremos utilizar a coordenadas de longitude e latitude dos municipios.
 
-##### 🎯 Adicionar coordenadas de latitude e longitude no data.frame
+#### 🎯 Adicionar coordenadas de latitude e longitude no data.frame
 
 ``` r
 # 1- Calcular os centroides (ponto central de cada município)
@@ -139,7 +151,7 @@ municipio \<- municipio %\>% mutate(longitude = coords[,1], latitude = coords[,2
 print(municipio)
 ```
 
-## Estruturação e Limpeza dos dados
+### [**Estruturação e Limpeza dos dados**]{.underline}
 
 ### 🎯 Objetivos
 
@@ -150,8 +162,6 @@ print(municipio)
 #### - Corrigir inconsistências, padronizar nomes de colunas, formatos de datas, categorias
 
 #### - Uniformizar valores como “sim”, “Sim”, “SIM” → “Sim”
-
-
 
 #### - Tratar valores ausentes, identificar NA, null ou campos vazios
 
@@ -169,16 +179,14 @@ print(municipio)
 
 #### - Decidir se devem ser removidos, ajustados ou mantidos
 
-### [União do 1º e 2º Conjunto de dados]{.underline}
-
-#### CHAVES: NOME DO MUNICIPIO E SIGLA DO ESTADO
+#### [União do 1º e 2º Conjunto de dados]{.underline}
 
 #### Análise inicial dos dados sugere que a variavel chave principal disponivel é o NOME DO MUNICIPIO, entretanto a ocorrência de nomes de municipios iguais em diferentes regioes é comum no Brasil, dessa maneira ao utilizar a segunda chave SIGLA DO ESTADO, ira garantir a correta uniao dos dados.
 
-##### 🎯 Padronização dos nomes de Variaveis e uniformizar valores.
+#### 🎯 Padronização dos nomes de Variaveis e uniformizar valores.
 
 ``` r
-
+#### 
 # Para realizar a união dos conjuntos de dados, inicialmente as variaveis "Nome do Municipio" e "Nome do Estado" deverão estar Padronizadas.
 
 #Padronização dos nomes de Variaveis
@@ -187,37 +195,39 @@ names(dados.anp)
 names(municipio)
 
 #Renomeando os nomes de variaveis do 2º conjunto de daods de acordo com o 1º.
-municipio <- setNames(municipio, c("codigo do Municipio", "Municipio", "Estado - Codigo", "Estado - Sigla","Nome do Estado","Regiao - Codigo","Nome da Regiao","geom","longitude","latitude" ))
+municipio \<- setNames(municipio, c("codigo do Municipio", "Municipio", "Estado - Codigo", "Estado - Sigla","Nome do Estado","Regiao - Codigo","Nome da Regiao","geom","longitude","latitude" ))
 names(municipio)
 
 
 # Análise previa das variaveis Chaves.
 
 #Chave:Nomes dos Municipios
-print(dados.anp$Municipio,) #A variavel:Municipio, contem nomes em letras maiúsculas e sem acentos.
-print(municipio$Municipio)  #A variavel:name_muni, contem nomes em letras minúsculas e com acentos.  
+print(dados.anp\$Municipio,) #A variavel:Municipio, contem nomes em letras maiúsculas e sem acentos.
+print(municipio\$Municipio)  #A variavel:name_muni, contem nomes em letras minúsculas e com acentos.  
 
 # 1ª- Padronizar tudo em letras MAIUSCULAS.
-dados.anp <- dados.anp %>% mutate(Municipio = tolower(Municipio))
-municipio <- municipio %>% mutate(Municipio = tolower(Municipio))
+dados.anp \<- dados.anp %\>% mutate(Municipio = tolower(Municipio))
+municipio \<- municipio %\>% mutate(Municipio = tolower(Municipio))
 
 # 2ª-padronizar tudo em palavras sem acentuação.
-dados.anp <- dados.anp %>% mutate(Municipio = stri_trans_general(Municipio, "Latin-ASCII"))
-municipio <- municipio %>% mutate(Municipio = stri_trans_general(Municipio, "Latin-ASCII"))
+dados.anp \<- dados.anp %\>% mutate(Municipio = stri_trans_general(Municipio, "Latin-ASCII"))
+municipio \<- municipio %\>% mutate(Municipio = stri_trans_general(Municipio, "Latin-ASCII"))
 
 #verificando resultado
-print(dados.anp$Municipio) #A variavel:Municipio, contem nomes em letras minúsculas e sem acentos.
-print(municipio$Municipio)  #A variavel:name_muni, contem nomes em letras minúsculas e sem acentos.  
+print(dados.anp\$Municipio) #A variavel:Municipio, contem nomes em letras minúsculas e sem acentos.
+print(municipio\$Municipio)  #A variavel:name_muni, contem nomes em letras minúsculas e sem acentos.  
 
 #Chave:Nomes dos Estados já estão padronizados
-head(dados.anp$`Estado - Sigla`)    
-head(municipio$`Estado - Sigla`)    
-
+head(dados.anp\$\`Estado - Sigla\`)    
+head(municipio\$\`Estado - Sigla\`)    
 ```
-##### 🎯 Unir os dados e avaliar o resultado
-##### O novo conjunto de dados será salvo com o mesmo nome do 1º conjunto (dados.anp), o método utilizado (Left join) combina duas tabelas mantendo todas as linhas da tabela da esquerda e adicionando colunas da tabela da direita quando as chaves coincidem. Linhas da esquerda sem correspondência recebem valores ausentes nas colunas adicionadas
 
-```r
+#### 🎯 Unir os dados e avaliar o resultado
+
+#### O novo conjunto de dados será salvo com o mesmo nome do 1º conjunto (dados.anp), o método utilizado (Left join) combina duas tabelas mantendo todas as linhas da tabela da esquerda e adicionando colunas da tabela da direita quando as chaves coincidem. Linhas da esquerda sem correspondência recebem valores ausentes nas colunas adicionadas
+
+``` r
+
 
 #verificar a dimensão dos conjuntos de dados antes da união
 dim(dados.anp) #Linhas:420409 e Colunas:16
