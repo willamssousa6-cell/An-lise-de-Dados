@@ -12,7 +12,7 @@ output:
 
 ### Uso da Ferramenta de análise de dados - Software R
 
-### [Objetivos da Análise:]{.underline}
+### **Objetivos da Análise:**
 
 #### ➡️ **Demonstrar através da análise exploratoria de dados (EDA) o processo para contar uma história a partir fontes de dados brutos**
 
@@ -22,7 +22,7 @@ output:
 
 #### ➡️ **Utilizar visualizações de dados geográficos e métodos estatísticos para explorar os dados**
 
-### [Fonte de Dados:]{.underline}
+### **Fonte de Dados:**
 
 #### 1- ANP: Dados do Preço do Combustível Automotivo - 1º semestre do ano de 2025.
 
@@ -34,7 +34,7 @@ output:
 
 #### Acesso a BigQuery <https://basedosdados.org/dataset/49ace9c8-ae2d-454b-bed9-9b9492a3a642?table=b39609b4-ffb2-4b4f-a182-47b0d160037b>
 
-### [Importações pacotes e dados para análise:]{.underline} 
+### **Importações pacotes e dados para análise:** 
 
 ### 🎯 Objetivos 
 
@@ -82,7 +82,7 @@ library(sf)
 library(stringi)
 ```
 
-#### [Carregar dados em um DataFrame.]{.underline}
+#### **Carregar dados em um DataFrame.**
 
 #### O 1º conjunto de dados escolhido está no formato de um arquivo xls (Excel), disponivel para Download no Portal de Portal de Dados Abertos.
 
@@ -135,35 +135,19 @@ municipio \<- municipio %\>% mutate(longitude = coords[,1], latitude = coords[,2
 print(municipio)
 ```
 
-### [Estruturação e Limpeza dos dados]{.underline}
+### **Estruturação e Limpeza dos dados**
 
 ### 🎯 Objetivos
 
-#### - Unir os dois data.frame criados (dados.anp e municipios)
+#### - Corrigir inconsistências, padronizar nomes de colunas e uniformizar valores 
 
-#### - Realizar análise prévia do novo data.frame
+#### - Unir os dois data.frame criados (dados.anp e municipios), realizar análise prévia do novo data.frame
 
-#### - Corrigir inconsistências, padronizar nomes de colunas, formatos de datas, categorias
+| Col1 |
+|------|
+|      |
 
-#### - Uniformizar valores como “sim”, “Sim”, “SIM” → “Sim”
-
-#### - Tratar valores ausentes, identificar NA, null ou campos vazios
-
-#### - Decidir se deve imputar, remover ou marcar esses dados
-
-#### - Remover duplicatas - Eliminar registros repetidos que podem distorcer análises
-
-#### - Ajustar tipos de variáveis, converter variáveis para os tipos corretos: numeric, factor, character, etc.
-
-#### - Filtrar e selecionar dados relevantes, remover colunas ou linhas desnecessárias
-
-#### - Criar novas variáveis, derivar colunas com base em regras (categorizar) ou cálculos (métricas).
-
-#### - Detectar e tratar outliers - Identificar valores extremos que podem afetar a análise
-
-#### - Decidir se devem ser removidos, ajustados ou mantidos
-
-#### [União do 1º e 2º Conjunto de dados]{.underline}
+#### **União do 1º e 2º Conjunto de dados**
 
 #### Análise inicial dos dados sugere que a variavel chave principal disponivel é o NOME DO MUNICIPIO, entretanto a ocorrência de nomes de municipios iguais em diferentes regioes é comum no Brasil, dessa maneira ao utilizar a segunda chave SIGLA DO ESTADO, ira garantir a correta uniao dos dados.
 
