@@ -356,25 +356,58 @@ display: none;
 </div>
 
 
-<div id="estudo-do-preço-do-combustível-automotivo-no-brasil-em-2025" class="section level1">
-<h1><strong>Estudo do Preço do combustível automotivo no Brasil em
-2025</strong></h1>
+<div id="estudo-do-preço-do-combustível-automotivo-no-brasil-em-2025" class="section level2">
+<h2><strong>Estudo do Preço do combustível automotivo no Brasil em
+2025</strong></h2>
+</div>
+<div id="objetivos-da-análise" class="section level2">
+<h2>OBJETIVOS DA ANÁLISE:</h2>
+</div>
+<div id="section" class="section level2">
+<h2></h2>
+</div>
 <div id="fonte-de-dados" class="section level2">
 <h2><strong>Fonte de Dados:</strong></h2>
-<div id="anp-dados-do-primeiro-semestre-do-ano-de-2025" class="section level3">
-<h3>1- ANP: Dados do primeiro semestre do ano de 2025</h3>
+<div id="anp-dados-do-preço-do-combustível-automotivo---1º-semestre-do-ano-de-2025." class="section level3">
+<h3>1- ANP: Dados do Preço do Combustível Automotivo - 1º semestre do
+ano de 2025.</h3>
+<div id="acesso-através-do-portal-de-dados-abertos-dados-da-agência-nacional-do-petróleo-gás-natural-e-biocombustíveis---anp" class="section level4">
+<h4>Acesso através do Portal de Dados Abertos, dados da Agência Nacional
+do Petróleo, Gás Natural e Biocombustíveis - ANP</h4>
+</div>
 </div>
 <div id="ibge-dados-de-localização-dos-municípios." class="section level3">
 <h3>2- IBGE: Dados de localização dos Municípios.</h3>
+<div id="acesso-através-da-pacote-de-dados-geográficos-brasileiros-geobr-permite-coletar-dados-dos-shapefiles-do-instituto-brasileiro-de-geografia-e-estatística-ibge-e-outros-conjuntos-oficiais-de-dados-espaciais-do-brasil" class="section level4">
+<h4>Acesso através da Pacote de Dados Geográficos Brasileiros (geobr),
+permite coletar dados dos shapefiles do Instituto Brasileiro de
+Geografia e Estatística (IBGE) e outros conjuntos oficiais de dados
+espaciais do Brasil</h4>
+</div>
+<div id="acesso-a-bigquery-httpsbasedosdados.orgdataset49ace9c8-ae2d-454b-bed9-9b9492a3a642tableb39609b4-ffb2-4b4f-a182-47b0d160037b" class="section level4">
+<h4>Acesso a BigQuery <a href="https://basedosdados.org/dataset/49ace9c8-ae2d-454b-bed9-9b9492a3a642?table=b39609b4-ffb2-4b4f-a182-47b0d160037b" class="uri">https://basedosdados.org/dataset/49ace9c8-ae2d-454b-bed9-9b9492a3a642?table=b39609b4-ffb2-4b4f-a182-47b0d160037b</a></h4>
 </div>
 </div>
 </div>
-<div id="objetivos-da-análise" class="section level1">
-<h1>OBJETIVOS DA ANÁLISE</h1>
-<div id="importações" class="section level2">
-<h2>Importações:</h2>
-<div id="instalar-e-importar-pacotes-relevantes-para-análise" class="section level3">
-<h3>Instalar e importar pacotes relevantes para análise</h3>
+<div id="importações-pacotes-e-dados-para-análise" class="section level2">
+<h2>Importações pacotes e dados para análise:</h2>
+<div id="objetivos" class="section level3">
+<h3>🎯 Objetivos</h3>
+<div id="instalar-e-importar-pacotes-relevantes-para-análise." class="section level4">
+<h4>- Instalar e importar pacotes relevantes para análise.</h4>
+</div>
+<div id="carregar-os-dados-em-um-dataframe-converte-arquivos-em-estruturas-manipulaveis." class="section level4">
+<h4>- Carregar os dados em um DataFrame, converte arquivos em estruturas
+manipulaveis.</h4>
+</div>
+<div id="realizar-análise-prévia-dos-dados-carregados." class="section level4">
+<h4>- Realizar análise prévia dos dados carregados.</h4>
+</div>
+<div id="identificar-problemas-como-codificação-de-texto-separadores-tipos-de-variáveis." class="section level4">
+<h4>- Identificar problemas como codificação de texto, separadores,
+tipos de variáveis.</h4>
+<ul>
+<li><div>
 <pre class="r"><code>##Instalar pacotes utilizando a função install.packages().
 
 install.packages(&quot;readr&quot;)
@@ -386,6 +419,8 @@ install.packages(&quot;leaflet&quot;)
 #grafico de geolocalização
 install.packages(&quot;geobr&quot;)
 install.packages(&quot;sf&quot;)</code></pre>
+</div></li>
+<li><div>
 <pre class="r"><code>#Importar pacotes utilizando a função library().
 
 library(naniar)
@@ -401,24 +436,111 @@ library(leaflet)
 library(geobr)
 library(sf)
 library(stringi)</code></pre>
+</div></li>
+</ul>
 </div>
 </div>
-<div id="carregar-o-conjunto-de-dados-em-um-dataframe" class="section level2">
-<h2>Carregar o conjunto de dados em um DataFrame</h2>
-<div id="o-conjunto-de-dados-fornecido-está-no-formato-de-um-arquivo-excel-.-carregar-os-dados-em-um-dataframe-e-salve-os-em-uma-variável-chamada-dados.anp." class="section level3">
-<h3>O conjunto de dados fornecido está no formato de um arquivo Excel .
-Carregar os dados em um DataFrame e salve-os em uma variável chamada
-(dados.anp).</h3>
-<div id="ao-importar-os-dados-revisar-o-tipo-de-dado-relizar-correções-se-for-o-caso." class="section level4">
-<h4>💡Ao importar os dados revisar o tipo de dado, relizar correções, se
-for o caso.</h4>
-<pre class="r"><code># Seu código R aqui
-minha_funcao &lt;- function(x) {
-  return(x * 2)
-}
+<div id="carregar-dados-em-um-dataframe." class="section level3">
+<h3>Carregar dados em um DataFrame.</h3>
+<div id="o-1º-conjunto-de-dados-escolhido-está-no-formato-de-um-arquivo-xls-excel-disponivel-para-download-no-portal-de-portal-de-dados-abertos." class="section level4">
+<h4>O 1º conjunto de dados escolhido está no formato de um arquivo xls
+(Excel), disponivel para Download no Portal de Portal de Dados
+Abertos.</h4>
+<div id="carregar-os-dados-em-um-dataframe-e-salvar-em-uma-variável-chamada-dados.anp-e-realizar-análise-prévia-dos-dados." class="section level5">
+<h5>🎯 Carregar os dados em um DataFrame e salvar em uma variável
+chamada (dados.anp) e realizar análise prévia dos dados.</h5>
+<pre class="r"><code>Preços_semestrais_AUTOMOTIVOS_2025_01 &lt;- read_excel(&quot;Preços semestrais - AUTOMOTIVOS_2025.01.xlsx&quot;)
 
-print(minha_funcao(5))</code></pre>
+#salvar em uma variável chamada (dados.anp)
+dados.anp&lt;-Preços_semestrais_AUTOMOTIVOS_2025_01
+
+#A função str(), exibe informações básica dos dados importados,como o tipo de objeto (ex: data frame, vetor, lista), número de elementos ou dimensões, nomes das variáveis e seus tipos de dados e uma amostra dos dados.
+#revisão básica dos dados importados
+str(dados.anp)</code></pre>
 </div>
+<div id="o-banco-de-dados-dos-preços-dos-combustiveis-é-um-data.frame-possui-42.0409-linhas-e-16-colunasvariaveis-a-maioria-das-variaveis-são-qualitativas-e-a-variável-valor-de-venda-a-única-numérica-do-tipo-contínua." class="section level5">
+<h5>💡 O banco de dados dos preços dos combustiveis é um data.frame,
+possui 42.0409 linhas e 16 Colunas(Variaveis), a maioria das variaveis
+são qualitativas e a variável “Valor de Venda” a única numérica, do tipo
+contínua”.</h5>
+</div>
+</div>
+<div id="o-2º-conjunto-de-dados-escolhido-está-disponivel-na-bigquery-plataforma-de-análise-de-dados-do-google-os-dados-podem-ser-acessados-pelo-pacotegeobr." class="section level4">
+<h4>O 2º conjunto de dados escolhido está disponivel na BigQuery
+plataforma de análise de dados do Google, os dados podem ser acessados
+pelo pacote(geobr).</h4>
+<div id="carregar-os-dados-em-um-dataframe-e-salvar-em-uma-variável-chamada-municipio-e-realizar-análise-prévia-dos-dados." class="section level5">
+<h5>🎯 Carregar os dados em um DataFrame e salvar em uma variável
+chamada (municipio) e realizar análise prévia dos dados.</h5>
+<pre class="r"><code># Carregar os dados dos municípios 
+municipio &lt;- read_municipality(year = 2024) #a função permite escolha do ano em que o dado foi coletado.
+str(municipio)</code></pre>
+</div>
+<div id="o-banco-de-dados-geografico-é-um-data.frame-possui-5.571-linhas-e-8-colunasvariaveis-são-variaveis-qualitativas-e-uma-variável-especial-geom-composta-por-uma-lista-de-geometrias-espaciais." class="section level5">
+<h5>💡 O banco de dados geografico é um data.frame, possui 5.571 linhas
+e 8 Colunas(Variaveis), são variaveis qualitativas e uma variável
+especial “geom”, composta por uma lista de geometrias espaciais.</h5>
+</div>
+<div id="a-variavel-geom-contem-uma-lista-de-dados-para-a-presente-análise-iremos-utilizar-a-coordenadas-de-longitude-e-latitude-dos-municipios." class="section level5">
+<h5>A variavel “geom”, contem uma lista de dados, para a presente
+análise iremos utilizar a coordenadas de longitude e latitude dos
+municipios.</h5>
+<pre class="r"><code>#### Para extraimos as coordenadas a latitude e longitude devenis calcular os centroides
+
+# Calcular os centroides (ponto central de cada município)
+
+mun_centroids \&lt;- st_centroid(municipio)
+
+# Extrair coordenadas de latitude e longitude
+
+coords \&lt;- st_coordinates(mun_centroids) coords
+
+# Adicionar as coordenadas ao dataframe original
+
+municipio \&lt;- municipio %\&gt;% mutate(longitude = coords[,1], latitude = coords[,2])
+
+# Visualizar os dados
+
+print(municipio)</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div id="estruturação-e-limpeza-dos-dados" class="section level2">
+<h2>Estruturação e Limpeza dos dados</h2>
+<div id="objetivos-1" class="section level3">
+<h3>🎯 Objetivos</h3>
+<div id="instalar-e-importar-pacotes-relevantes-para-análise.-1" class="section level4">
+<h4>- Instalar e importar pacotes relevantes para análise.</h4>
+</div>
+<div id="carregar-os-dados-em-um-dataframe-converte-arquivos-em-estruturas-manipulaveis.-1" class="section level4">
+<h4>- Carregar os dados em um DataFrame, converte arquivos em estruturas
+manipulaveis.</h4>
+</div>
+<div id="realizar-análise-prévia-dos-dados-carregados.-1" class="section level4">
+<h4>- Realizar análise prévia dos dados carregados.</h4>
+</div>
+<div id="identificar-problemas-como-codificação-de-texto-separadores-tipos-de-variáveis.-1" class="section level4">
+<h4>- Identificar problemas como codificação de texto, separadores,
+tipos de variáveis.</h4>
+</div>
+<div id="objetivos-da-estruturação-e-limpeza-de-dados-no-r-1.-corrigir-inconsistências---padronizar-nomes-de-colunas-formatos-de-datas-categorias---uniformizar-valores-como-sim-sim-sim-sim-2.-tratar-valores-ausentes---identificar-na-null-ou-campos-vazios---decidir-se-deve-imputar-remover-ou-marcar-esses-dados-3.-remover-duplicatas---eliminar-registros-repetidos-que-podem-distorcer-análises---usar-funções-como-duplicated-ou-distinct-4.-ajustar-tipos-de-variáveis---converter-variáveis-para-os-tipos-corretos-numeric-factor-character-etc.---evita-erros-em-funções-estatísticas-e-gráficos-5.-filtrar-e-selecionar-dados-relevantes---remover-colunas-ou-linhas-desnecessárias---focar-apenas-nos-dados-úteis-para-o-objetivo-da-análise-6.-criar-novas-variáveis---derivar-colunas-com-base-em-regras-ou-cálculos---exemplo-criar-uma-variável-faixa-etária-a-partir-da-idade-7.-detectar-e-tratar-outliers---identificar-valores-extremos-que-podem-afetar-a-análise---decidir-se-devem-ser-removidos-ajustados-ou-mantidos" class="section level4">
+<h4>Objetivos da Estruturação e Limpeza de Dados no R 1. Corrigir
+inconsistências - Padronizar nomes de colunas, formatos de datas,
+categorias - Uniformizar valores como “sim”, “Sim”, “SIM” → “Sim” 2.
+Tratar valores ausentes - Identificar NA, null ou campos vazios -
+Decidir se deve imputar, remover ou marcar esses dados 3. Remover
+duplicatas - Eliminar registros repetidos que podem distorcer análises -
+Usar funções como duplicated() ou distinct() 4. Ajustar tipos de
+variáveis - Converter variáveis para os tipos corretos: numeric, factor,
+character, etc. - Evita erros em funções estatísticas e gráficos 5.
+Filtrar e selecionar dados relevantes - Remover colunas ou linhas
+desnecessárias - Focar apenas nos dados úteis para o objetivo da análise
+6. Criar novas variáveis - Derivar colunas com base em regras ou
+cálculos - Exemplo: criar uma variável “faixa etária” a partir da idade
+7. Detectar e tratar outliers - Identificar valores extremos que podem
+afetar a análise - Decidir se devem ser removidos, ajustados ou
+mantidos</h4>
 </div>
 </div>
 </div>

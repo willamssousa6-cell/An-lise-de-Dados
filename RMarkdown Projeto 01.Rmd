@@ -3,8 +3,8 @@ title: 'Análise de Dados '
 author: "Willams Sousa Brito"
 date: "20/10/2025"
 output:
-  html_document: default
   word_document: default
+  html_document: default
   pdf_document: default
 ---
 
@@ -22,40 +22,113 @@ output:
 
 ### Instalar e importar pacotes relevantes para análise
 
-```{r}
-#Instalar pacotes utilizando a função install.packages().
+-   <div>
 
-#install.packages("readr")
-#install.packages("dplyr")
-#install.packages("tidyverse")
-#install.packages("naniar")
-#install.packages("readxl")
-#install.packages("leaflet")
-#grafico de geolocalização
-#install.packages("geobr")
-#install.packages("sf")
-```
+    ``` {r}
+    ##Instalar pacotes utilizando a função install.packages().
 
-```{r}
-#Importar pacotes utilizando a função library().
+    #install.packages("readr")
+    #install.packages("dplyr")
+    #install.packages("tidyverse")
+    #install.packages("naniar")
+    #install.packages("readxl")
+    #install.packages("leaflet")
+    #grafico de geolocalização
+    #install.packages("geobr")
+    #install.packages("sf")
+    ```
 
-library(naniar)
-library(readr)
-library(readxl)
-library(dplyr)
-library(ggplot2)
-library(plotly)
-library(httr)
-library(jsonlite)
-library(tidyverse)
-library(leaflet)
-library(geobr)
-library(sf)
-library(stringi)
-```
+    </div>
+
+-   <div>
+
+    ``` {r}
+    #Importar pacotes utilizando a função library().
+
+    library(naniar)
+    library(readr)
+    library(readxl)
+    library(dplyr)
+    library(ggplot2)
+    library(plotly)
+    library(httr)
+    library(jsonlite)
+    library(tidyverse)
+    library(leaflet)
+    library(geobr)
+    library(sf)
+    library(stringi)
+    ```
+
+    </div>
 
 ## Carregar o conjunto de dados em um DataFrame
 
-### O conjunto de dados fornecido está no formato de um arquivo Excel . Carregar  os dados  em um DataFrame e salve-os em uma variável chamada (dados.anp).
+### O 1º conjunto de dados fornecido está no formato de um arquivo Excel .
 
-#### 💡Ao importar os dados revisar o tipo de dado, relizar correções, se for o caso.
+### Carregar os dados em um DataFrame e salvar em uma variável chamada (dados.anp).
+
+
+``` {r}
+Preços_semestrais_AUTOMOTIVOS_2025_01 <- read_excel("Preços semestrais - AUTOMOTIVOS_2025.01.xlsx")
+
+#salvar em uma variável chamada (dados.anp)
+dados.anp<-Preços_semestrais_AUTOMOTIVOS_2025_01
+
+#A função str(), exibe informações básica dos dados importados,como o tipo de objeto (ex: data frame, vetor, lista), número de elementos ou dimensões, nomes das variáveis e seus tipos de dados e uma amostra dos dados.
+str(dados.anp) 
+```
+#### 💡Ao importar os dados
+
+
+```{r}
+#IMPORTAR 2º CONJUNTO DE DADOS (DADOS IBGE DOS ESTADOS/MUNICIPIOS)-PARA MAPAS INTERATIVOS 
+####################################################################################
+#falar sobre os banco de dados.
+
+
+# Carregar os dados dos municípios 
+municipio <- read_municipality(year = 2024)
+head(municipio,10)
+dim(municipio)
+
+#verificando tipo  e classes de dados
+str(municipio)
+#alteração de dados do tipos numericos para caracteres.
+#is.character(municipio$`codigo do Municipio`)#então
+#municipio$`codigo do Municipio`<-as.character(municipio$`codigo do Municipio`)
+
+#is.character(municipio$`Estado - Codigo`);#então
+#municipio$`Estado - Codigo`<-as.character(municipio$`Estado - Codigo`)
+
+#is.character(municipio$`Regiao - Codigo`);#então
+#municipio$`Regiao - Codigo`<-as.character(municipio$`Regiao - Codigo`)
+
+#verificar alterações 
+sapply(municipio, class)
+sapply(municipio, typeof)
+
+#Para extraimos as coordenadas a latitude e longitude devenis calcular os centroides
+
+# Calcular os centroides (ponto central de cada município)
+mun_centroids <- st_centroid(municipio)
+
+# Extrair coordenadas de latitude e longitude
+coords <- st_coordinates(mun_centroids)
+coords
+
+# Adicionar as coordenadas ao dataframe original
+municipio <- municipio %>%
+  mutate(longitude = coords[,1],
+         latitude = coords[,2])
+
+# Visualizar os dados
+print(municipio)
+
+#head(mun_coords %>% select(code_muni, name_muni, latitude, longitude))
+```
+
+
+
+
+
