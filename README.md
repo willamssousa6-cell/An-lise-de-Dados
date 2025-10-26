@@ -48,35 +48,24 @@ output:
 | #### - Identificar problemas como codificação de texto, separadores, tipos de variáveis. |
 +------------------------------------------------------------------------------------------+
 
-#### 
-
 #### 🎯Instalar pacotes utilizando a função install.packages().
 
--   <div>
+``` r
+#Instalar pacotes utilizando 
 
-    ``` r
-    ##Instalar pacotes utilizando 
-
-    install.packages("readr")
-    install.packages("dplyr")
-    install.packages("tidyverse")
-    install.packages("naniar")
-    install.packages("readxl")
-    install.packages("leaflet")
-    #grafico de geolocalização
-    install.packages("geobr")
-    install.packages("sf")
-    ```
-
-    </div>
-
--   <div>
-
-    </div>
+install.packages("readr")
+install.packages("dplyr")
+install.packages("tidyverse")
+install.packages("naniar")
+install.packages("readxl")
+install.packages("leaflet")
+#grafico de geolocalização
+install.packages("geobr")
+install.packages("sf")
+```
 
 #### 🎯 Importar pacotes utilizando a função library().
 
-````         
 ``` r
 #Importar pacotes 
 
@@ -94,9 +83,6 @@ library(geobr)
 library(sf)
 library(stringi)
 ```
-
-</div>
-````
 
 #### [Carregar dados em um DataFrame.]{.underline}
 
