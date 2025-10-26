@@ -12,7 +12,7 @@ output:
 
 ### Uso da Ferramenta de análise de dados - Software R
 
-### [**Objetivos da Análise:**]{.underline}
+### [Objetivos da Análise:]{.underline}
 
 #### ➡️ **Demonstrar através da análise exploratoria de dados (EDA) o processo para contar uma história a partir fontes de dados brutos**
 
@@ -22,7 +22,7 @@ output:
 
 #### ➡️ **Utilizar visualizações de dados geográficos e métodos estatísticos para explorar os dados**
 
-### [**Fonte de Dados:**]{.underline}
+### [Fonte de Dados:]{.underline}
 
 #### 1- ANP: Dados do Preço do Combustível Automotivo - 1º semestre do ano de 2025.
 
@@ -34,19 +34,17 @@ output:
 
 #### Acesso a BigQuery <https://basedosdados.org/dataset/49ace9c8-ae2d-454b-bed9-9b9492a3a642?table=b39609b4-ffb2-4b4f-a182-47b0d160037b>
 
-### [**Importações pacotes e dados para análise:**]{.underline}
+### [Importações pacotes e dados para análise:]{.underline} 
 
-+------------------------------------------------------------------------------------------+
-| ### 🎯 Objetivos                                                                         |
-+:=========================================================================================+
-| #### - Instalar e importar pacotes relevantes para análise.                              |
-+------------------------------------------------------------------------------------------+
-| #### - Carregar os dados em um DataFrame, converte arquivos em estruturas manipulaveis.  |
-+------------------------------------------------------------------------------------------+
-| #### - Realizar análise prévia dos dados carregados.                                     |
-+------------------------------------------------------------------------------------------+
-| #### - Identificar problemas como codificação de texto, separadores, tipos de variáveis. |
-+------------------------------------------------------------------------------------------+
+### 🎯 Objetivos 
+
+#### - Instalar e importar pacotes relevantes para análise.
+
+#### - Carregar os dados em um DataFrame, converte arquivos em estruturas manipulaveis.
+
+#### - Realizar análise prévia dos dados carregados.
+
+#### - Identificar problemas como codificação de texto, separadores, tipos de variáveis.
 
 #### 🎯Instalar pacotes utilizando a função install.packages().
 
@@ -137,7 +135,7 @@ municipio \<- municipio %\>% mutate(longitude = coords[,1], latitude = coords[,2
 print(municipio)
 ```
 
-### [**Estruturação e Limpeza dos dados**]{.underline}
+### [Estruturação e Limpeza dos dados]{.underline}
 
 ### 🎯 Objetivos
 
